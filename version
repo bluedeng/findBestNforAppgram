@@ -1,0 +1,5 @@
+修改单层查询，弃用old_version_knn_postprocess方法
+改写gramQuery方法增加stringQuery方法
+选用目前数据集查询中获得各数据集query中top5结果里最大max_ed作为阈值
+计算相应same gram数，代入函数进行结果过滤
+以此取得最佳单层n值

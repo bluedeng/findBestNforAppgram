@@ -1,0 +1,26 @@
+CC = g++ -Wno-deprecated -DNDEBUG -O3
+CFLAGS = -c
+
+OFILES = Time.o Gram.o GramList.o CountFilter.o Query.o SeqDB.o
+
+simple_index: ${OFILES} simple_index_knn_query.o
+	${CC} -o $@ ${OFILES} simple_index_knn_query.o
+
+simple_index_knn_query.o: simple_index_knn_query.cpp
+	${CC} ${CFLAGS} $< -o $@ ${INCLUDE}
+
+Time.o: Time.cpp Time.h
+	${CC} ${CFLAGS} $< -o $@ ${INCLUDE}
+Gram.o: Gram.cpp Gram.h
+	${CC} ${CFLAGS} $< -o $@ ${INCLUDE}
+GramList.o: GramList.cpp GramList.h
+	${CC} ${CFLAGS} $< -o $@ ${INCLUDE}
+CountFilter.o: CountFilter.cpp CountFilter.h
+	${CC} ${CFLAGS} $< -o $@ ${INCLUDE}
+Query.o: Query.cpp Query.h
+	${CC} ${CFLAGS} $< -o $@ ${INCLUDE}
+SeqDB.o: SeqDB.cpp SeqDB.h
+	${CC} ${CFLAGS} $< -o $@ ${INCLUDE}
+
+clean:
+	rm -f *.o
